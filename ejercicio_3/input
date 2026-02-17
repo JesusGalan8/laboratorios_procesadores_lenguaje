@@ -1,0 +1,10 @@
+variable := 100
+
+
+# One line comment
+
+/*
+	Comentario
+	multi
+	linea
+*/
