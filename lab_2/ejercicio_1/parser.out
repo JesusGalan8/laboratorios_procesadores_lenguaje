@@ -1,0 +1,91 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> sentencia
+Rule 2     programa -> sentencia programa
+Rule 3     sentencia -> ID EQUAL NUMBER SEMICOLON
+
+Terminals, with rules where they appear
+
+EQUAL                : 3
+ID                   : 3
+NUMBER               : 3
+SEMICOLON            : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+programa             : 2 0
+sentencia            : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . sentencia
+    (2) programa -> . sentencia programa
+    (3) sentencia -> . ID EQUAL NUMBER SEMICOLON
+
+    ID              shift and go to state 3
+
+    programa                       shift and go to state 1
+    sentencia                      shift and go to state 2
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> sentencia .
+    (2) programa -> sentencia . programa
+    (1) programa -> . sentencia
+    (2) programa -> . sentencia programa
+    (3) sentencia -> . ID EQUAL NUMBER SEMICOLON
+
+    $end            reduce using rule 1 (programa -> sentencia .)
+    ID              shift and go to state 3
+
+    sentencia                      shift and go to state 2
+    programa                       shift and go to state 4
+
+state 3
+
+    (3) sentencia -> ID . EQUAL NUMBER SEMICOLON
+
+    EQUAL           shift and go to state 5
+
+
+state 4
+
+    (2) programa -> sentencia programa .
+
+    $end            reduce using rule 2 (programa -> sentencia programa .)
+
+
+state 5
+
+    (3) sentencia -> ID EQUAL . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 6
+
+
+state 6
+
+    (3) sentencia -> ID EQUAL NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 7
+
+
+state 7
+
+    (3) sentencia -> ID EQUAL NUMBER SEMICOLON .
+
+    ID              reduce using rule 3 (sentencia -> ID EQUAL NUMBER SEMICOLON .)
+    $end            reduce using rule 3 (sentencia -> ID EQUAL NUMBER SEMICOLON .)
+
