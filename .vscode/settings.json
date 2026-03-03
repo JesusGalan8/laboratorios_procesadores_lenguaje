@@ -1,4 +1,5 @@
 {
     "editor.inlineSuggest.enabled": false,
-    "github.copilot.editor.enableAutoCompletions": false
+    "github.copilot.editor.enableAutoCompletions": false,
+    "files.eol": "\n"
 }

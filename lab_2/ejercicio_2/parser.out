@@ -1,0 +1,114 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     lamda -> <empty>
+Rule 2     programa -> sentencia
+Rule 3     programa -> sentencia NEW_LINE programa
+Rule 4     sentencia -> INT_VALUE operand INT_VALUE
+Rule 5     operand -> PLUS
+Rule 6     operand -> MINUS
+
+Terminals, with rules where they appear
+
+INT_VALUE            : 4 4
+MINUS                : 6
+NEW_LINE             : 3
+PLUS                 : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+lamda                : 
+operand              : 4
+programa             : 3 0
+sentencia            : 2 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (2) programa -> . sentencia
+    (3) programa -> . sentencia NEW_LINE programa
+    (4) sentencia -> . INT_VALUE operand INT_VALUE
+
+    INT_VALUE       shift and go to state 3
+
+    programa                       shift and go to state 1
+    sentencia                      shift and go to state 2
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (2) programa -> sentencia .
+    (3) programa -> sentencia . NEW_LINE programa
+
+    $end            reduce using rule 2 (programa -> sentencia .)
+    NEW_LINE        shift and go to state 4
+
+
+state 3
+
+    (4) sentencia -> INT_VALUE . operand INT_VALUE
+    (5) operand -> . PLUS
+    (6) operand -> . MINUS
+
+    PLUS            shift and go to state 6
+    MINUS           shift and go to state 7
+
+    operand                        shift and go to state 5
+
+state 4
+
+    (3) programa -> sentencia NEW_LINE . programa
+    (2) programa -> . sentencia
+    (3) programa -> . sentencia NEW_LINE programa
+    (4) sentencia -> . INT_VALUE operand INT_VALUE
+
+    INT_VALUE       shift and go to state 3
+
+    sentencia                      shift and go to state 2
+    programa                       shift and go to state 8
+
+state 5
+
+    (4) sentencia -> INT_VALUE operand . INT_VALUE
+
+    INT_VALUE       shift and go to state 9
+
+
+state 6
+
+    (5) operand -> PLUS .
+
+    INT_VALUE       reduce using rule 5 (operand -> PLUS .)
+
+
+state 7
+
+    (6) operand -> MINUS .
+
+    INT_VALUE       reduce using rule 6 (operand -> MINUS .)
+
+
+state 8
+
+    (3) programa -> sentencia NEW_LINE programa .
+
+    $end            reduce using rule 3 (programa -> sentencia NEW_LINE programa .)
+
+
+state 9
+
+    (4) sentencia -> INT_VALUE operand INT_VALUE .
+
+    NEW_LINE        reduce using rule 4 (sentencia -> INT_VALUE operand INT_VALUE .)
+    $end            reduce using rule 4 (sentencia -> INT_VALUE operand INT_VALUE .)
+
