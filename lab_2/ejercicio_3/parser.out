@@ -1,0 +1,369 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> sentence SEMICOLON program
+Rule 2     program -> <empty>
+Rule 3     sentence -> expresion SEMICOLON
+Rule 4     expresion -> expresion PLUS expresion
+Rule 5     expresion -> expresion MINUS expresion
+Rule 6     expresion -> expresion TIMES expresion
+Rule 7     expresion -> expresion DIVIDE expresion
+Rule 8     expresion -> MINUS expresion
+Rule 9     expresion -> L_PAREN expresion R_PAREN
+Rule 10    expresion -> NUMBER
+
+Terminals, with rules where they appear
+
+DIVIDE               : 7
+L_PAREN              : 9
+MINUS                : 5 8
+NUMBER               : 10
+PLUS                 : 4
+R_PAREN              : 9
+SEMICOLON            : 1 3
+TIMES                : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+expresion            : 3 4 4 5 5 6 6 7 7 8 9
+program              : 1 0
+sentence             : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . sentence SEMICOLON program
+    (2) program -> .
+    (3) sentence -> . expresion SEMICOLON
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    $end            reduce using rule 2 (program -> .)
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    program                        shift and go to state 1
+    sentence                       shift and go to state 2
+    expresion                      shift and go to state 3
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> sentence . SEMICOLON program
+
+    SEMICOLON       shift and go to state 7
+
+
+state 3
+
+    (3) sentence -> expresion . SEMICOLON
+    (4) expresion -> expresion . PLUS expresion
+    (5) expresion -> expresion . MINUS expresion
+    (6) expresion -> expresion . TIMES expresion
+    (7) expresion -> expresion . DIVIDE expresion
+
+    SEMICOLON       shift and go to state 8
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    TIMES           shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+
+state 4
+
+    (8) expresion -> MINUS . expresion
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    expresion                      shift and go to state 13
+
+state 5
+
+    (9) expresion -> L_PAREN . expresion R_PAREN
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    expresion                      shift and go to state 14
+
+state 6
+
+    (10) expresion -> NUMBER .
+
+    SEMICOLON       reduce using rule 10 (expresion -> NUMBER .)
+    PLUS            reduce using rule 10 (expresion -> NUMBER .)
+    MINUS           reduce using rule 10 (expresion -> NUMBER .)
+    TIMES           reduce using rule 10 (expresion -> NUMBER .)
+    DIVIDE          reduce using rule 10 (expresion -> NUMBER .)
+    R_PAREN         reduce using rule 10 (expresion -> NUMBER .)
+
+
+state 7
+
+    (1) program -> sentence SEMICOLON . program
+    (1) program -> . sentence SEMICOLON program
+    (2) program -> .
+    (3) sentence -> . expresion SEMICOLON
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    $end            reduce using rule 2 (program -> .)
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    sentence                       shift and go to state 2
+    program                        shift and go to state 15
+    expresion                      shift and go to state 3
+
+state 8
+
+    (3) sentence -> expresion SEMICOLON .
+
+    SEMICOLON       reduce using rule 3 (sentence -> expresion SEMICOLON .)
+
+
+state 9
+
+    (4) expresion -> expresion PLUS . expresion
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    expresion                      shift and go to state 16
+
+state 10
+
+    (5) expresion -> expresion MINUS . expresion
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    expresion                      shift and go to state 17
+
+state 11
+
+    (6) expresion -> expresion TIMES . expresion
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    expresion                      shift and go to state 18
+
+state 12
+
+    (7) expresion -> expresion DIVIDE . expresion
+    (4) expresion -> . expresion PLUS expresion
+    (5) expresion -> . expresion MINUS expresion
+    (6) expresion -> . expresion TIMES expresion
+    (7) expresion -> . expresion DIVIDE expresion
+    (8) expresion -> . MINUS expresion
+    (9) expresion -> . L_PAREN expresion R_PAREN
+    (10) expresion -> . NUMBER
+
+    MINUS           shift and go to state 4
+    L_PAREN         shift and go to state 5
+    NUMBER          shift and go to state 6
+
+    expresion                      shift and go to state 19
+
+state 13
+
+    (8) expresion -> MINUS expresion .
+    (4) expresion -> expresion . PLUS expresion
+    (5) expresion -> expresion . MINUS expresion
+    (6) expresion -> expresion . TIMES expresion
+    (7) expresion -> expresion . DIVIDE expresion
+
+    SEMICOLON       reduce using rule 8 (expresion -> MINUS expresion .)
+    PLUS            reduce using rule 8 (expresion -> MINUS expresion .)
+    MINUS           reduce using rule 8 (expresion -> MINUS expresion .)
+    TIMES           reduce using rule 8 (expresion -> MINUS expresion .)
+    DIVIDE          reduce using rule 8 (expresion -> MINUS expresion .)
+    R_PAREN         reduce using rule 8 (expresion -> MINUS expresion .)
+
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+  ! TIMES           [ shift and go to state 11 ]
+  ! DIVIDE          [ shift and go to state 12 ]
+
+
+state 14
+
+    (9) expresion -> L_PAREN expresion . R_PAREN
+    (4) expresion -> expresion . PLUS expresion
+    (5) expresion -> expresion . MINUS expresion
+    (6) expresion -> expresion . TIMES expresion
+    (7) expresion -> expresion . DIVIDE expresion
+
+    R_PAREN         shift and go to state 20
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    TIMES           shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+
+state 15
+
+    (1) program -> sentence SEMICOLON program .
+
+    $end            reduce using rule 1 (program -> sentence SEMICOLON program .)
+
+
+state 16
+
+    (4) expresion -> expresion PLUS expresion .
+    (4) expresion -> expresion . PLUS expresion
+    (5) expresion -> expresion . MINUS expresion
+    (6) expresion -> expresion . TIMES expresion
+    (7) expresion -> expresion . DIVIDE expresion
+
+    SEMICOLON       reduce using rule 4 (expresion -> expresion PLUS expresion .)
+    PLUS            reduce using rule 4 (expresion -> expresion PLUS expresion .)
+    MINUS           reduce using rule 4 (expresion -> expresion PLUS expresion .)
+    R_PAREN         reduce using rule 4 (expresion -> expresion PLUS expresion .)
+    TIMES           shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+  ! TIMES           [ reduce using rule 4 (expresion -> expresion PLUS expresion .) ]
+  ! DIVIDE          [ reduce using rule 4 (expresion -> expresion PLUS expresion .) ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+
+
+state 17
+
+    (5) expresion -> expresion MINUS expresion .
+    (4) expresion -> expresion . PLUS expresion
+    (5) expresion -> expresion . MINUS expresion
+    (6) expresion -> expresion . TIMES expresion
+    (7) expresion -> expresion . DIVIDE expresion
+
+    SEMICOLON       reduce using rule 5 (expresion -> expresion MINUS expresion .)
+    PLUS            reduce using rule 5 (expresion -> expresion MINUS expresion .)
+    MINUS           reduce using rule 5 (expresion -> expresion MINUS expresion .)
+    R_PAREN         reduce using rule 5 (expresion -> expresion MINUS expresion .)
+    TIMES           shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+  ! TIMES           [ reduce using rule 5 (expresion -> expresion MINUS expresion .) ]
+  ! DIVIDE          [ reduce using rule 5 (expresion -> expresion MINUS expresion .) ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+
+
+state 18
+
+    (6) expresion -> expresion TIMES expresion .
+    (4) expresion -> expresion . PLUS expresion
+    (5) expresion -> expresion . MINUS expresion
+    (6) expresion -> expresion . TIMES expresion
+    (7) expresion -> expresion . DIVIDE expresion
+
+    SEMICOLON       reduce using rule 6 (expresion -> expresion TIMES expresion .)
+    PLUS            reduce using rule 6 (expresion -> expresion TIMES expresion .)
+    MINUS           reduce using rule 6 (expresion -> expresion TIMES expresion .)
+    TIMES           reduce using rule 6 (expresion -> expresion TIMES expresion .)
+    DIVIDE          reduce using rule 6 (expresion -> expresion TIMES expresion .)
+    R_PAREN         reduce using rule 6 (expresion -> expresion TIMES expresion .)
+
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+  ! TIMES           [ shift and go to state 11 ]
+  ! DIVIDE          [ shift and go to state 12 ]
+
+
+state 19
+
+    (7) expresion -> expresion DIVIDE expresion .
+    (4) expresion -> expresion . PLUS expresion
+    (5) expresion -> expresion . MINUS expresion
+    (6) expresion -> expresion . TIMES expresion
+    (7) expresion -> expresion . DIVIDE expresion
+
+    SEMICOLON       reduce using rule 7 (expresion -> expresion DIVIDE expresion .)
+    PLUS            reduce using rule 7 (expresion -> expresion DIVIDE expresion .)
+    MINUS           reduce using rule 7 (expresion -> expresion DIVIDE expresion .)
+    TIMES           reduce using rule 7 (expresion -> expresion DIVIDE expresion .)
+    DIVIDE          reduce using rule 7 (expresion -> expresion DIVIDE expresion .)
+    R_PAREN         reduce using rule 7 (expresion -> expresion DIVIDE expresion .)
+
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+  ! TIMES           [ shift and go to state 11 ]
+  ! DIVIDE          [ shift and go to state 12 ]
+
+
+state 20
+
+    (9) expresion -> L_PAREN expresion R_PAREN .
+
+    SEMICOLON       reduce using rule 9 (expresion -> L_PAREN expresion R_PAREN .)
+    PLUS            reduce using rule 9 (expresion -> L_PAREN expresion R_PAREN .)
+    MINUS           reduce using rule 9 (expresion -> L_PAREN expresion R_PAREN .)
+    TIMES           reduce using rule 9 (expresion -> L_PAREN expresion R_PAREN .)
+    DIVIDE          reduce using rule 9 (expresion -> L_PAREN expresion R_PAREN .)
+    R_PAREN         reduce using rule 9 (expresion -> L_PAREN expresion R_PAREN .)
+

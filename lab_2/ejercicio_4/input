@@ -1,0 +1,9 @@
+# ID
+# +, -, *
+# norma(v1), distancia(v1,v2), ecalar(v1,v2)
+
+v1 = (1,2)
+v2 = (3,4)
+
+# Que se muestra por pantalla a modo de calculadora
+norma(v1) * v2;
